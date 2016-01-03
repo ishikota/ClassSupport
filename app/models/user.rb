@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save { self.student_id = student_id.downcase }
+  before_save { student_id.downcase! }
   validates :name, presence:true, length:{ maximum:50 }
   VALID_STUDENTID_REGEX = /[a-zA-Z]\d{7}/
   validates :student_id, presence:true, length:{ is:8 },

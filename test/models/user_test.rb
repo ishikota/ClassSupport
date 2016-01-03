@@ -30,6 +30,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "student_id should be saves as lower-case" do
+    upper_student_id = "B1578048"
+    @user.student_id = upper_student_id
+    @user.save
+    assert_equal upper_student_id.downcase, @user.reload.student_id
+  end
+
   test "student id validation" do
     invalid_id = %w[bc123456 12345678]
     invalid_id.each do |id|
