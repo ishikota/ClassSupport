@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
             format:{ with:VALID_STUDENTID_REGEX },
             uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length:{ minimum:6 }
+  validates :password, length:{ minimum:6 }, allow_nil:true
 
   # 与えられた文字列のハッシュを返す
   def User.digest(string)
